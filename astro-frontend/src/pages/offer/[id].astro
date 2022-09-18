@@ -1,0 +1,18 @@
+---
+export async function getStaticPaths() {
+  const response = await fetch('http://localhost:1337/api/offers')
+  const data = await response.json()
+
+  return data.data.map((d) => {
+
+    return { 
+      params: {id: d.id},
+      props: { title: d.attributes.title}
+    }
+  })
+}
+
+const { id } = Astro.params
+const { title } = Astro.props
+---
+<h1>{title}</h1>
