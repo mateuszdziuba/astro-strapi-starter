@@ -1,0 +1,27 @@
+---
+import { Image } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+import Navigation from './Navigation.astro';
+import logo from '../assets/images/logo.png';
+---
+
+<header class="sticky top-0 z-40 flex-none mx-auto w-full bg-gray-400/50">
+	<div class="py-3 px-3 mx-auto w-full">
+		<div class="flex justify-between">
+			<div class="flex justify-center">
+				<Image width={120} height={53} src={logo} alt="Logo" />
+			</div>
+			<div class="flex items-center md:hidden">
+				<button
+					type="button"
+					class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition"
+					aria-label="Toggle menu"
+					data-aw-toggle-menu
+				>
+					<Icon name="tabler:menu" class="w-6 h-6" optimize={false} />
+				</button>
+			</div>
+			<Navigation />
+		</div>
+	</div>
+</header>

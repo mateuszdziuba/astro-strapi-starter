@@ -1,0 +1,57 @@
+---
+import { Icon } from 'astro-icon';
+import { Image } from '@astrojs/image/components';
+import hero from '../assets/images/hero.jpg';
+---
+
+<section>
+	<div class="max-w-6xl mx-auto px-4 sm:px-6">
+		<div class="grid grid-cols-2 py-12 gap-16 md:py-20">
+			<div class="pb-10 md:pb-16">
+				<h1
+					class="text-5xl md:text-[3rem] font-bold leading-tighter tracking-tighter mb-4 font-heading"
+				>
+					Jakość poparta fundamentem tradycji
+				</h1>
+				<div class="max-w-3xl mx-auto">
+					<p class="text-xl text-gray-600 mb-8 dark:text-slate-400">
+						Firma PZPG Piastów Dystrybucja Sp. z o.o. zajmuje się wytwarzaniem
+						mieszanek gumowych o szerokim zakresie twardości oraz wytrzymałości.
+						Posiadamy bazę ponad 300 receptur. Uwzględniając życzenie klienta
+						jesteśmy w stanie dobrać rodzaj mieszanki spełniającej dodatkowe
+						wymagania
+					</p>
+					<div class="max-w-none flex flex-nowrap flex-col sm:flex-row gap-4">
+						<div class="flex w-full sm:w-auto">
+							<a
+								class="inline-flex justify-center px-6 py-3 bg-red-400 text-white rounded-md hover:bg-primary-800 hover:border-primary-800 sm:mb-0 w-full"
+								target="_blank"
+								rel="noopener"
+							>
+								<Icon name="tabler:download" class="w-5 h-5 mr-1 -ml-1.5" /> Pobierz
+								katalog
+							</a>
+						</div>
+						<div class="flex w-full sm:w-auto">
+							<a
+								class="inline-flex justify-center px-6 py-3 rounded-md text-white bg-gray-900 hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-800 w-full"
+								href="#features">Skontaktuj się z nami</a
+							>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div>
+				<div class="relative mb-8 m-auto max-w-3xl">
+					<Image
+						src={hero}
+						class="mx-auto rounded-md shadow-lg bg-gray-400 dark:bg-slate-700 w-full"
+						width={300}
+						height={200}
+						alt="Hero Image"
+					/>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
