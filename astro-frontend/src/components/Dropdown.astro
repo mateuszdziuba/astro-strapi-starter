@@ -1,0 +1,53 @@
+---
+const {name, children} = Astro.props
+---
+
+<li class="relative inline-block text-left dropdown">
+  <a
+    class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+  >
+    {name}
+  </a>
+  <div class="absolute left-1/2 -translate-x-1/2 z-10 w-56 origin-top-right bg-white border-2 border-black ring-1 ring-black ring-opacity-5 focus:outline-none dropdown-menu hidden h-0">
+    <ul>
+      {children.map((child) => (
+        <li>
+          <a
+            href="#"
+            class="hover:bg-gray-100 text-gray-900 block px-4 py-2 text-sm"
+          >
+            {child.name}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</li>
+
+<script>
+const dropdown = document.querySelector('.dropdown')
+
+const openMenu = (toggle) => {
+    toggle.setAttribute('aria-expanded', true)
+    toggle.setAttribute('aria-label', 'Close menu navigation')
+    // toggle.innerHTML = `<svg width="20" height="20" aria-hidden="true" fill="var(--action-color)" xmlns="http://www.w3.org/2000/svg"><path d="M10 10 2 2m8 8 8 8m-8-8 8-8m-8 8-8 8" stroke="var(--action-color)" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  }
+  const closeMenu = (toggle) => {
+    toggle.setAttribute('aria-expanded', false)
+    toggle.setAttribute('aria-label', 'Open menu navigation')
+    // toggle.innerHTML = `<svg width="26" height="19" aria-hidden="true" fill="var(--action-color)" xmlns="http://www.w3.org/2000/svg"><path d="M2 1.667h24m-24 8h24m-24 8h24" stroke="var(--action-color)" stroke-width="2.667" stroke-linecap="round" stroke-linejoin="round"/></svg>`
+  }
+  // execution
+  if (dropdown) {
+    dropdown.addEventListener('click', _ => {
+      const dropdownMenu = dropdown.querySelector('.dropdown-menu')
+      if (dropdownMenu) {
+        dropdownMenu.classList.toggle('hidden')
+        dropdownMenu.classList.toggle('h-0')
+        dropdownMenu.classList.contains('hidden')
+          ? openMenu(dropdown)
+          : closeMenu(dropdown)
+      }
+    })
+  }
+</script>

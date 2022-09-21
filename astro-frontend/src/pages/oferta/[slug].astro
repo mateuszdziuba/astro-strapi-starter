@@ -1,0 +1,20 @@
+---
+export async function getStaticPaths() {
+
+  const res = await fetch(`http://localhost:1337/api/offers`)
+
+  const resData = await res.json();
+
+
+  return resData.data.map((d) => {
+    return { 
+      params: { slug: d.attributes.slug }, 
+      props: { title: d.attributes.title} 
+    }
+  })
+  
+}
+
+const { title } = Astro.props;
+---
+<h1>{title}</h1>
