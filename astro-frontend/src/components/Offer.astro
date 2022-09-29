@@ -1,0 +1,51 @@
+---
+import Card from './Card.astro';
+
+const res = await fetch(`http://localhost:1337/api/offers?populate=*`);
+
+const resData = await res.json();
+
+const items = resData.data.map((d) => ({
+  title: d.attributes.title,
+  description: d.attributes.description,
+  image: `http://localhost:1337${d.attributes.image.data.attributes.formats.thumbnail.url}`,
+  href: d.attributes.slug,
+}));
+---
+
+<section class="relative">
+  <div class="absolute inset-0 bg-slate-200 mb-32"></div>
+  <div class="container mx-auto px-4 pt-4 sm:px-6 relative">
+    <div class="mb-8 text-center">
+      <p
+        class="text-base text-primary-600 dark:text-primary-200 font-semibold tracking-wide uppercase"
+      >
+        Oferta
+      </p>
+      <h2
+        class="text-4xl md:text-5xl font-bold leading-tighter tracking-tighter mb-4 font-heading"
+      >
+        Nasze produkty
+      </h2>
+      <p
+        class="max-w-3xl mx-auto text-center text-xl text-gray-600 dark:text-slate-400"
+      >
+        Od lat tworzymy produkty na wiele rynków
+      </p>
+    </div>
+    <div
+      class="grid gap-6 md:grid-cols-2 lg:grid-cols-3 items-start my-12 dark:text-white"
+    >
+      {
+        items.map((i) => (
+          <Card
+            title={i.title}
+            description={i.description}
+            image={i.image}
+            href="#"
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>
